@@ -9,7 +9,6 @@
   } from "firebase/auth";
     import { goto } from "$app/navigation";
     import { toasts, ToastContainer, FlatToast }  from "svelte-toasts";
-    import { page } from "$app/stores";
 
   export let data: PageData;
   async function signInWithGoogle() {
@@ -54,7 +53,7 @@
   </h1>
   <img
     src={data.photoURL ?? "/user.png"}
-    alt="photoURL"
+    alt="profile"
     width="128"
     class="mx-auto rounded-2xl mt-8"
   />
