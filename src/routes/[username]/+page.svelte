@@ -9,6 +9,7 @@
   } from "firebase/auth";
     import { goto } from "$app/navigation";
     import { toasts, ToastContainer, FlatToast }  from "svelte-toasts";
+    import { page } from "$app/stores";
 
   export let data: PageData;
   async function signInWithGoogle() {
@@ -42,6 +43,9 @@
   <title>@{data.username} Links</title>
   <meta name="description" content="{data.bio}" />
   <meta property="og:image" content="{data.photoURL}" />
+  <meta property="og:title" content="{data.username} Links" />
+  <meta property="og:description" content="{data.bio}" />
+  <meta property="og:url" content="https://nmd.mov/{data.username}" />
 </svelte:head>
 
 <main class=" prose text-center mx-auto mt-8">
