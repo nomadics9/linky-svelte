@@ -40,8 +40,8 @@
 
 <svelte:head>
   <title>@{data.username} Links</title>
-  <meta name="description" content="={data.bio}" />
-  <meta name="og:image" content="{data.photoURL}" />
+  <meta name="description" content="{data.bio}" />
+  <meta property="og:image" content="{data.photoURL}" />
 </svelte:head>
 
 <main class=" prose text-center mx-auto mt-8">
