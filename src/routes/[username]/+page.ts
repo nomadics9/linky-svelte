@@ -1,6 +1,6 @@
 import { collection, getDocs, limit, query, where } from 'firebase/firestore';
 import type { PageLoad } from './$types';
-import { db, userData } from '$lib/firebase';
+import { db, userData} from '$lib/firebase';
 import { error } from '@sveltejs/kit';
 
 export const load = (async ({ params }) => {
@@ -20,14 +20,11 @@ export const load = (async ({ params }) => {
         throw error(404, "that user does not exists")
     }
 
-    if (!data.published) {
-        throw error(403, `The Profile of @${data.username} is not public!`)
-    }
-
     return {
         username: data.username,
         photoURL: data.photoURL,
         bio: data.bio,
         links: data.links ?? [],
+        published: Boolean
     }
 }) satisfies PageLoad;

@@ -9,8 +9,10 @@
   } from "firebase/auth";
     import { goto } from "$app/navigation";
     import { toasts, ToastContainer, FlatToast }  from "svelte-toasts";
+    import Myerror from "$lib/components/Myerror.svelte"
 
   export let data: PageData;
+
   async function signInWithGoogle() {
     const provider = new GoogleAuthProvider();
     const user = await signInWithPopup(auth, provider);
@@ -36,6 +38,10 @@
     navigator.clipboard.writeText(copytext)
     showToast()
   }
+
+
+  let unpublished = data.published
+  let username = data.username
 </script>
 
 <svelte:head>
@@ -47,6 +53,11 @@
   <meta property="og:url" content="https://nmd.mov/{data.username}" />
 </svelte:head>
 
+{#if unpublished && data.username != $userData?.username}
+<div class="card card-body m-auto">
+<Myerror {username}></Myerror>
+</div>
+{:else}
 <main class=" prose text-center mx-auto mt-8">
   <h1 class="text-4xl text-teal-700">
     @{data.username}
@@ -101,4 +112,5 @@
       on:click={signInWithGoogle}>Sign in</button
     >
   </div>
+{/if}
 {/if}
