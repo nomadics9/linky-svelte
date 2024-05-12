@@ -20,7 +20,7 @@ export const load = (async ({ params }) => {
         throw error(404, "that user does not exists")
     }
 
-    if (!data.published) {
+    if (!data.published && data.username != data.username) {
         throw error(403, `The Profile of @${data.username} is not public!`)
     }
 

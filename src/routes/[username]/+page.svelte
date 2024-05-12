@@ -72,7 +72,7 @@
   </ul>
   <br />
 </div>
-{#if $userData?.username == data.username}
+{#if $userData?.username == $userData?.username}
   <div class=" top-0 right-0 absolute">
     <a href="/{$userData?.username}/edit">
       <button class="btn btn-ghost text-xs btn-xs mx-3 my-3"
@@ -90,6 +90,9 @@
 		<FlatToast {data}  />
 	</ToastContainer>
   </div>
+  {#if $userData?.published == false}
+  <h2 class="text-center text-background">Your profile is not published!</h2>
+  {/if}
 
 {:else}
   <div class="top-0 right-0 absolute">
