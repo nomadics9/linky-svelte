@@ -1,7 +1,7 @@
 <script lang="ts">
   import UserLink from "$lib/components/UserLink.svelte";
   import type { PageData } from "./$types";
-  import { userData, auth, user } from "$lib/firebase";
+  import { userData, auth} from "$lib/firebase";
   import {
     signInWithPopup,
     GoogleAuthProvider,
@@ -53,7 +53,7 @@
   <meta property="og:url" content="https://nmd.mov/{data.username}" />
 </svelte:head>
 
-{#if unpublished && data.username != $userData?.username}
+{#if unpublished == false && data.username != $userData?.username}
 <div class="card card-body m-auto">
 <Myerror {username}></Myerror>
 </div>

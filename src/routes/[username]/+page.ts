@@ -25,6 +25,6 @@ export const load = (async ({ params }) => {
         photoURL: data.photoURL,
         bio: data.bio,
         links: data.links ?? [],
-        published: Boolean
+        published: data.published
     }
 }) satisfies PageLoad;
