@@ -1,7 +1,7 @@
 <script lang="ts">
   import UserLink from "$lib/components/UserLink.svelte";
   import type { PageData } from "./$types";
-  import { userData, auth } from "$lib/firebase";
+  import { userData, auth, user } from "$lib/firebase";
   import {
     signInWithPopup,
     GoogleAuthProvider,
@@ -72,7 +72,7 @@
   </ul>
   <br />
 </div>
-{#if $userData?.username == $userData?.username}
+{#if $userData?.username == data.username}
   <div class=" top-0 right-0 absolute">
     <a href="/{$userData?.username}/edit">
       <button class="btn btn-ghost text-xs btn-xs mx-3 my-3"
