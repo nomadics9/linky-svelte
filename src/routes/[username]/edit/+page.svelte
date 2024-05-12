@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { page } from "$app/stores";
   import { db, user, userData } from "$lib/firebase";
   import {
     arrayRemove,
@@ -93,13 +92,12 @@
 
   let publish = $userData?.published
   function togglePublish() {
-    publish = !$userData?.published
+    publish == !publish
     const userRef = doc(db, "users", $user!.uid);
     updateDoc(userRef, {
       published: publish
     });
   }
-  publish == $userData?.published
   
 
   function moveUp(index: any) {
@@ -235,7 +233,7 @@
       <div class="form-control">
         <label class="label cursor-pointer">
           <span class="label-text">Published</span> 
-          <input type="checkbox" class="toggle" bind:value={publish} on:change={togglePublish}/>
+          <input type="checkbox" class="toggle" bind:checked={publish} on:change={togglePublish}/>
         </label>
       </div>
     {/if}
