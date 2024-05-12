@@ -91,6 +91,16 @@
     });
   }
 
+  let publish = $userData?.published
+  function togglePublish() {
+    publish = !$userData?.published
+    const userRef = doc(db, "users", $user!.uid);
+    updateDoc(userRef, {
+      published: publish
+    });
+  }
+  publish == $userData?.published
+  
 
   function moveUp(index: any) {
     const userRef = doc(db, "users", $user!.uid)
@@ -222,6 +232,12 @@
       >
         Add a Link
       </button>
+      <div class="form-control">
+        <label class="label cursor-pointer">
+          <span class="label-text">Published</span> 
+          <input type="checkbox" class="toggle" bind:value={publish} on:change={togglePublish}/>
+        </label>
+      </div>
     {/if}
   {/if}
 
